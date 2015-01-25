@@ -28,7 +28,15 @@ public class DieTester {
 		int diceSum=ob1.getValue()+ob2.getValue();
 		System.out.println("Sum of the dice:"+diceSum);
 		
-		System.out.println("for loop to roll the two dice 10 times show the values and the sum: ");
+		System.out.println("\nfor loop to roll the two dice 10 times show the values and the sum: ");
+		System.out.println("Die 1		Die 2		Sum");
+		for(int i=0; i<10; i++ ){
+			ob1.roll();
+			ob2.roll();
+			diceSum=ob1.getValue()+ob2.getValue();
+			System.out.println(ob1.getValue()+"\t\t\t"+ob2.getValue()+"\t\t\t"+diceSum);
+			
+		}
 		
 
 	}
