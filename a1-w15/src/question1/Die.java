@@ -2,39 +2,53 @@ package question1;
 import java.util.Random;
 
 public class Die {
-	//number of sides of a dice
-	int sides;
+	/*
+	 * 
+	 */
+	private int sidesOfDice;
 	
 	//the value of the side currently facing up
-	int value;
+	private int valueOfSideFacingUp;
 	
 	//to randomize the sides
-	Random dice = new Random(); 
+	Random dice; 
 	
-	// this Constructor wont take any argument
-	Die(){
-		sides=6;
+	// this Constructor wont take any argument  
+	public Die(){
+		sidesOfDice=6;
+		dice = new Random();
 		roll();
+		
+		System.out.println(this);
+		
 	}
 	
 	//this constructor accepts single argument
-	Die(int x){
-		sides=x;
+	public Die(int x){
+		
+		if(x==4 || x==6 || x==8 || x==10 || x==12 || x==20 || x==100)
+			sidesOfDice=x ;
+		else 
+			sidesOfDice=6 ;
+		
+		dice = new Random();
 		roll();
+		
+		System.out.println(this);
 	}
 	
 	//returns the current value of the side that faces Up
-	int getValue(){
-		return  value;
+	public int getValue(){
+		return  valueOfSideFacingUp;
 	}
 	
 	//Randomly rolls the die
-	void roll(){
-		value=1+dice.nextInt(sides);
+	public void roll(){
+		valueOfSideFacingUp=1+dice.nextInt(sidesOfDice);
 	}
 	
 	public String toString(){
-		return "Die [ "+sides +" sides, value=  "+getValue()+"]";
+		return "Die [ "+sidesOfDice +"sides, value = "+valueOfSideFacingUp+"]";
+		
 	}
-
 }

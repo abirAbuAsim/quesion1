@@ -12,11 +12,7 @@ public class DieTester {
 		Die ob1 = new Die();
 		Die ob2 =new Die(diceInput);
 		
-		
-		
-		
-		System.out.println(ob1);
-		System.out.println(ob2);
+		input.close();
 		
 		System.out.println("Rolling each separately and printing the values:");
 		ob1.roll();
@@ -38,7 +34,31 @@ public class DieTester {
 			
 		}
 		
-
+		System.out.println("Creating five dice.");
+		
+		
+		Die[] x= new Die[7];
+		for(int i=1; i<=5; i++){
+			x[i]=new Die();
+			
+		}
+		
+		int yahtzee=0,counter=1;
+		for(int i=1; i<=1000; i++){
+			
+			for(int j=2; j<=5; j++){
+				
+				if(x[j].getValue()==x[j-1].getValue()){
+					counter++;
+				}
+				if(counter==5)
+					yahtzee++;
+			}
+			
+			
+			
+			
+		}
 	}
 
 }
