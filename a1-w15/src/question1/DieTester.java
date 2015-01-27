@@ -37,28 +37,60 @@ public class DieTester {
 		System.out.println("Creating five dice.");
 		
 		
-		Die[] x= new Die[7];
-		for(int i=1; i<=5; i++){
-			x[i]=new Die();
-			
-		}
+		Die dieOb1 = new Die();
+		Die dieOb2 = new Die();
+		Die dieOb3 = new Die();
+		Die dieOb4 = new Die();
+		Die dieOb5 = new Die();
 		
-		int yahtzee=0,counter=1;
+		int numberOfRolls=0,sum=0;
+		int maximumRolls=-1, minimumRolls=Integer.MAX_VALUE;
+		double averageRolls;
+		
+		int yahtzeeCount=0;
+		
+		System.out.println("Rolling until i find 1000 Yahtzees. Counting the number of rolls it takes to get each one.");
 		for(int i=1; i<=1000; i++){
 			
-			for(int j=2; j<=5; j++){
+			Boolean yahtzee=false;
+			
+			numberOfRolls = 0 ;
+			while(! yahtzee){
 				
-				if(x[j].getValue()==x[j-1].getValue()){
-					counter++;
+				numberOfRolls++;
+				
+				dieOb1.roll();
+				dieOb2.roll();
+				dieOb3.roll();
+				dieOb4.roll();
+				dieOb5.roll();
+				
+				if(dieOb1.getValue()==dieOb2.getValue() && dieOb1.getValue()==dieOb3.getValue()
+					&& dieOb1.getValue()==dieOb3.getValue() && dieOb1.getValue()==dieOb4.getValue()
+					&&dieOb1.getValue()==dieOb5.getValue()){
+					yahtzeeCount++;
+					yahtzee=true;
+					
 				}
-				if(counter==5)
-					yahtzee++;
+				
 			}
+			sum +=numberOfRolls;		
+			if(numberOfRolls >=  maximumRolls )
+				maximumRolls=numberOfRolls;
 			
-			
-			
-			
+			if(numberOfRolls <=minimumRolls )
+				minimumRolls = numberOfRolls;
+
 		}
+		if(yahtzeeCount == 1000)
+			System.out.print("Found 1000 Yahtzees.");
+		
+		System.out.print(" max rolls to find one: "+ sum);
+		System.out.print(" min rolls : "+ minimumRolls);
+		
+		averageRolls = sum/1000.0;
+		
+		System.out.print(" avg rolls : "+ averageRolls);
 	}
 
 }
